@@ -1,0 +1,35 @@
+[2025-06-01] Initial Analysis and Setup
+- Reviewed assignment specification in detail.
+- Chose Python as the implementation language due to its fast prototyping capability.
+- Decided to use object-oriented design: each router will be represented as a class with distance and routing tables.
+
+[2025-06-02] Input Parsing and Data Structure Design
+- Implemented `parse_input()` to read routers, topology, and update sections from standard input.
+- Created `Router` class with `initialize`, `update_neighbor`, `send_distance_vector`, and `receive_update` methods.
+- Added nested dictionaries for distance table: destination -> via -> cost.
+
+[2025-06-03] Distance Vector Algorithm Implementation
+- Implemented synchronous DV loop with convergence detection.
+- Implemented logic to recompute routing table based on minimal cost paths.
+- Tested with basic 3-node topology and confirmed correct step-by-step table output.
+
+[2025-06-04] Output Formatting and Verification
+- Added pretty-printed output for distance tables and routing tables.
+- Used `INF` for unreachable nodes.
+- Verified formatting matched the required output format.
+
+[2025-06-05] Split Horizon Enhancement
+- Cloned DV code into `split_horizon.py` and modified update logic to respect Split Horizon rule.
+- Ensured that no router sends an update about a route back to the neighbor it learned it from.
+- Added exception for broken links (if cost becomes -1).
+
+[2025-06-06] Testing with Update Section
+- Applied link removal and addition using UPDATE section.
+- Verified that routers converge again correctly and update tables reflect new topology.
+- Saved test input as `test_input.txt`.
+
+[2025-06-06] Final Verification and Documentation
+- Created `README.md` with usage instructions.
+- Prepared `logbook.txt` with development history.
+- Tested both DV and SH with edge cases (e.g., adding new router mid-run).
+- Ready for submission.
